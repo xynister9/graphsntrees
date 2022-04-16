@@ -1,15 +1,16 @@
 
-vi adj[MN]; // adjacency list of graph
-int ind[MN] ; // in-degree 
+vector<int> adj[MN]; // adjacency list of graph
+vector<int> ind(MN); ; // in-degree 
 
 // take input indegree ( ind[b]++ ) 
-vi toposort( int n ){
+vector<int> toposort( int n ){
 
-    vi topo;
+    vector<int> topo;
 
-    priority_queue<int , vi , greater<int> >  pq ;
+    priority_queue<int , vector<int> , greater<int> >  pq ;
+
     for(int i=1; i<=n; i++){
-        if(ind[i]==0  ) pq.push(i) ;
+        if( ind[i]==0 ) pq.push(i) ;
     }
 
     while(!pq.empty()){
@@ -24,9 +25,8 @@ vi toposort( int n ){
         }
     }
 
-    if(topo.sz<n){
-        topo.clear() ;
-    }
-
+    if(topo.size()<n) topo.clear() ;
+    // topo means no toposort - cycle detected 
+    
     return topo ;
 }
