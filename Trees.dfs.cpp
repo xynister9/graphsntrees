@@ -18,3 +18,13 @@ void dfs( int node ){
             dfs( child);
     }
 }   
+
+
+//(C) COUNT COMPONENTS
+    int count=0;
+    for( int i=1; i<=n; i++){
+        if( vis[i]!=1){
+            count++;
+            dfs(i);
+        }
+    }
